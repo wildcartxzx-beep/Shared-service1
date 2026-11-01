@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Video Call Service - High Conversion Rate Plan</title>
+    
+    <meta property="og:title" content="Video Call Services & Pricing">
+    <meta property="og:description" content="Select your package and proceed with secure payment.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/wildcartxzx-beep/Pbkash-/refs/heads/main/logo.png">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --surface: #0f1017;
+            --accent-gold: #ffb703;
+            --accent-orange: #fb8500;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --border-glow: rgba(255, 183, 3, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: var(--bg-deep);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 12px;
+            background: radial-gradient(circle at 50% 0%, #241803 0%, var(--bg-deep) 80%);
+            position: relative;
+        }
+
+        /* ব্যাকগ্রাউন্ড লাইটিং অ্যানিমেশন */
+        .ambient-glow {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+            filter: blur(140px);
+            opacity: 0.22;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(-10px, -10px); }
+            100% { transform: scale(1.25) translate(10px, 10px); }
+        }
+
+        /* মূল কন্টেইনার */
+        .main-container {
+            width: 100%;
+            max-width: 390px;
+            background: var(--surface);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid var(--border-glow);
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 
+                        0 0 40px rgba(255, 183, 3, 0.2);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: containerEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes containerEntry {
+            0% { opacity: 0; transform: translateY(25px) scale(0.94); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* প্রিমিয়াম হেডার সেকশন */
+        .hero-banner {
+            width: 100%;
+            padding: 24px 20px;
+            background: linear-gradient(135deg, rgba(255, 183, 3, 0.15), rgba(251, 133, 0, 0.15));
+            border-bottom: 1.5px solid rgba(255, 183, 3, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-icon {
+            font-size: 34px;
+            margin-bottom: 4px;
+            animation: bounceIcon 2s infinite ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes bounceIcon {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.08); }
+        }
+
+        .hero-title {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .hero-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* কনটেন্ট এরিয়া */
+        .content-area {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* নির্দেশনামূলক বক্স */
+        .instruction-box {
+            width: 100%;
+            background: rgba(255, 183, 3, 0.12);
+            border: 1.5px solid rgba(255, 183, 3, 0.45);
+            border-radius: 14px;
+            padding: 11px 14px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 14px;
+            animation: alertBlink 1.8s infinite alternate;
+        }
+
+        @keyframes alertBlink {
+            0% { box-shadow: 0 0 5px rgba(255, 183, 3, 0.2); transform: scale(1); }
+            100% { box-shadow: 0 0 18px rgba(255, 183, 3, 0.6); transform: scale(1.01); }
+        }
+
+        /* প্যাকেজ গ্রিড */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 14px;
+        }
+
+        .price-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 183, 3, 0.4);
+            padding: 15px 10px;
+            border-radius: 18px;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: cardFloat 3.5s infinite ease-in-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .price-chip:nth-child(1) { animation-delay: 0s; border-color: #ffb703; }
+        .price-chip:nth-child(2) { animation-delay: 0.5s; border-color: #fb8500; }
+        .price-chip:nth-child(3) { animation-delay: 1s; border-color: #ffb703; }
+        .price-chip:nth-child(4) { animation-delay: 1.5s; border-color: #fb8500; }
+        .price-chip:nth-child(5) { animation-delay: 2s; border-color: #ffb703; }
+        .price-chip:nth-child(6) { animation-delay: 2.5s; border-color: #fb8500; }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 5px 15px rgba(255,183,3,0.1); }
+            50% { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 22px rgba(255,183,3,0.3); }
+        }
+
+        .price-chip::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(0deg, transparent, rgba(255, 183, 3, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            opacity: 0;
+        }
+
+        .price-chip:hover::after {
+            opacity: 1;
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        .price-chip:hover {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+            border-color: #fff;
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 183, 3, 0.6);
+            animation: none;
+        }
+
+        .price-chip:active {
+            transform: scale(0.95);
+        }
+
+        .chip-duration {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        .chip-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .price-chip:hover .chip-duration,
+        .price-chip:hover .chip-price {
+            color: #000;
+        }
+
+        /* লাইভ কাউন্টার বক্স */
+        .live-counter-box {
+            width: 100%;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1.5px dashed #10b981;
+            border-radius: 14px;
+            padding: 9px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
+        }
+
+        .live-dot-green {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: blinkGreen 1s infinite;
+        }
+
+        @keyframes blinkGreen {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        /* পেমেন্ট মোডাল সেকশন */
+        #payment-method-section {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-deep);
+            display: none;
+            opacity: 0;
+            clip-path: circle(0% at 50% 50%);
+            transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 30;
+        }
+
+        #payment-method-section.show {
+            display: flex;
+            opacity: 1;
+            clip-path: circle(150% at 50% 50%);
+        }
+
+        /* নতুন আল্ট্রা-মডার্ন পেমেন্ট সামারি কার্ড/রিসিট */
+        .receipt-card {
+            background: linear-gradient(135deg, rgba(255, 183, 3, 0.15), rgba(251, 133, 0, 0.08));
+            border: 2px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 16px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 183, 3, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .receipt-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .receipt-details {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .receipt-amount {
+            color: var(--accent-gold);
+            font-size: 22px;
+            text-shadow: 0 0 10px rgba(255, 183, 3, 0.4);
+        }
+
+        .payment-prompt {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 18px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .payment-subprompt {
+            font-size: 11px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            animation: pulseText 1.5s infinite alternate;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; transform: scale(1.03); }
+        }
+        
+        /* গেটওয়ে গ্রিড */
+        .gateway-grid {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+        
+        .gateway-card {
+            width: 130px;
+            height: 70px;
+            background: #ffffff;
+            border: 3px solid var(--accent-gold);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 8px;
+            animation: bounceGateway 1.6s infinite ease-in-out;
+            box-shadow: 0 8px 25px rgba(255, 183, 3, 0.4);
+            position: relative;
+        }
+
+        .gateway-card:nth-child(2) {
+            animation-delay: 0.3s;
+            border-color: #fb8500;
+            box-shadow: 0 8px 25px rgba(251, 133, 0, 0.4);
+        }
+
+        @keyframes bounceGateway {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+
+        .gateway-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .gateway-card:hover {
+            transform: scale(1.12) translateY(-4px);
+            box-shadow: 0 15px 35px rgba(255,255,255,0.4);
+        }
+
+        .gateway-card:active {
+            transform: scale(0.94);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.04);
+        }
+
+        /* ফুটার */
+        .footer {
+            height: 45px;
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+<div class="main-container">
+    
+    <!-- প্রিমিয়াম হেডার -->
+    <div class="hero-banner">
+        <div class="hero-icon">💎</div>
+        <div class="hero-title">ভিডিও কল সার্ভিস চার্জ</div>
+        <div class="hero-subtitle">প্যাকেজ সিলেক্ট করে দ্রুত পেমেন্ট সম্পন্ন করুন</div>
+    </div>
+
+    <!-- কনটেন্ট এরিয়া -->
+    <div class="content-area">
+        
+        <div class="instruction-box">
+            ⚡ আপনার কাঙ্ক্ষিত প্যাকেজটি বেছে নিন
+        </div>
+
+        <!-- প্যাকেজ গ্রিড -->
+        <div class="price-grid" id="priceGrid">
+            <div class="price-chip" onclick="initPkg(20, '০৩ মিনিট', this)">
+                <span class="chip-duration">০৩ মিনিট</span>
+                <span class="chip-price">৳২০</span>
+            </div>
+
+            <div class="price-chip" onclick="initPkg(110, '০৫ মিনিট', this)">
+                <span class="chip-duration">০৫ মিনিট</span>
+                <span class="chip-price">৳১১০</span>
+            </div>
+
+            <div class="price-chip" onclick="initPkg(250, '১০ মিনিট', this)">
+                <span class="chip-duration">১০ মিনিট</span>
+                <span class="chip-price">৳২৫০</span>
+            </div>
+
+            <div class="price-chip" onclick="initPkg(350, '২০ মিনিট', this)">
+                <span class="chip-duration">২০ মিনিট</span>
+                <span class="chip-price">৳৩৫০</span>
+            </div>
+
+            <div class="price-chip" onclick="initPkg(510, '৩০ মিনিট', this)">
+                <span class="chip-duration">৩০ মিনিট</span>
+                <span class="chip-price">৳৫১০</span>
+            </div>
+
+            <div class="price-chip" onclick="initPkg(1020, '১ ঘণ্টা', this)">
+                <span class="chip-duration">১ ঘণ্টা</span>
+                <span class="chip-price">৳১,০২০</span>
+            </div>
+        </div>
+
+        <div class="live-counter-box">
+            <div class="live-dot-green"></div>
+            <span>এই মুহূর্তে <b id="liveCounter" style="color: #fff;">৭</b> জন সফলভাবে পেমেন্ট সম্পন্ন করছেন</span>
+        </div>
+
+        <!-- পেমেন্ট মোডাল সেকশন -->
+        <div id="payment-method-section">
+            
+            <!-- স্মার্ট রিসিট প্যানেল -->
+            <div class="receipt-card">
+                <div class="receipt-badge">Selected Package</div>
+                <div class="receipt-details" id="selectedInfoText">
+                    <span>০৩ মিনিট</span> ➔ <span class="receipt-amount">৳২০</span>
+                </div>
+            </div>
+            
+            <div class="payment-prompt">
+                <span>পেমেন্ট সম্পাদন করতে ব্যাংকিং লোগোতে স্পর্শ করুন</span>
+                <span class="payment-subprompt">⚡ ১-ক্লিকে ইনস্ট্যান্ট পেমেন্ট সুবিধা</span>
+            </div>
+            
+            <div class="gateway-grid">
+                <!-- বিকাশ লোগো -->
+                <div class="gateway-card" onclick="execRoute('bkash')">
+                    <img src="https://raw.githubusercontent.com/devvilxxx1/Faltux/refs/heads/main/bkash-logo-horizontal-mobile-banking-app-icon-emblem-transparent-background-free-png.png" alt="bKash">
+                </div>
+                <!-- নগদ লোগো -->
+                <div class="gateway-card" onclick="execRoute('nogod')">
+                    <img src="https://raw.githubusercontent.com/wildcartxzx-beep/Cartimage/refs/heads/main/images%20(1).png" alt="Nagad">
+                </div>
+            </div>
+
+            <button class="back-btn" onclick="restoreView()">← অন্য প্যাকেজ বেছে নিন</button>
+        </div>
+    </div>
+
+    <!-- ফুটার -->
+    <div class="footer">
+        <div>© 2026 palomoir, All Rights Reserved</div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        var _amt = 0;
+        var _dur = '';
+
+        // লাইভ কাউন্টার আপডেট
+        setInterval(function() {
+            var counterEl = document.getElementById('liveCounter');
+            if (counterEl) {
+                var val = Math.floor(Math.random() * 18) + 3;
+                counterEl.innerText = val;
+            }
+        }, 4500);
+
+        // প্যাকেজ সিলেকশন ও মোডাল ওপেন
+        window.initPkg = function(a, d, el) {
+            _amt = a;
+            _dur = d;
+
+            var infoBox = document.getElementById('selectedInfoText');
+            if (infoBox) {
+                infoBox.innerHTML = '<span>' + _dur + ' ভিডিও কল</span> ➔ <span class="receipt-amount">৳' + _amt + '</span>';
+            }
+
+            var pSec = document.getElementById('payment-method-section');
+            if (pSec) {
+                pSec.style.display = 'flex';
+                setTimeout(function() { pSec.classList.add('show'); }, 20);
+            }
+        };
+
+        // ব্যাক ভিউ
+        window.restoreView = function() {
+            var pSec = document.getElementById('payment-method-section');
+            if (pSec) {
+                pSec.classList.remove('show');
+                setTimeout(function() { pSec.style.display = 'none'; }, 400);
+            }
+        };
+
+        // পেমেন্ট রিডাইরেকশন রুটস
+        window.execRoute = function(provider) {
+            if (_amt <= 0) return;
+            var routes = {
+                'bkash': 'payment.html?amount=',
+                'nogod': 'payment2.html?amount='
+            };
+            if (routes[provider]) {
+                window.location.href = routes[provider] + _amt;
+            }
+        };
+    })();
+</script>
+</body>
+</html>
